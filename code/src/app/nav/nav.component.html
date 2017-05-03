@@ -1,0 +1,59 @@
+<div class="app-nav">
+    <div class="app-nav-expando">
+        <i class="fa fa-chevron-left"></i>
+    </div>
+    <div class="app-nav-logo-header">
+        <svg class="app-nav-logo" xmlns="http://www.w3.org/2000/svg" width="36px" height="48px" viewBox="0 -20 370 370">
+            <g transform="matrix(12.58495 0 0 12.58495 -584.344 -1.372)">
+                <circle cx="49.684" cy="11.836" r="2.702" fill="#fff" stroke="#000" stroke-width="1.1" />
+                <circle cx="71.786" cy="11.836" r="2.702" fill="#fff" stroke="#000" stroke-width="1.1" />
+                <path d="M68.226 2.352L62.822 1.08l-1.986 6.278" fill="none" stroke="#000" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"
+                />
+                <circle cx="70.431" cy="2.789" r="2.13" fill="#fff" stroke="#000" stroke-width="1.1" />
+                <ellipse cx="60.676" cy="15.552" rx="12.238" ry="7.987" fill="#fff" stroke="#000" stroke-width="1.1" />
+                <g>
+                    <path class="eyes" d="M56.437 12.001A2.021 2.021 0 0 0 54.438 14c0 1.087.912 1.969 1.999 1.969s1.969-.882 1.969-1.969c0-1.087-.882-1.999-1.969-1.999zM65.063 12.001A2.022 2.022 0 0 0 63.062 14c0 1.088.914 1.969 2.001 1.969A1.969 1.969 0 0 0 67.032 14c0-1.088-.881-1.999-1.969-1.999z"
+                    />
+                    <path d="M56.507 19.229c1.066 1.066 2.786 1.271 4.212 1.271M64.963 19.229c-1.067 1.066-2.786 1.271-4.213 1.271" fill="none"
+                        stroke="#000" stroke-width="1.1" stroke-linecap="round" />
+                </g>
+            </g>
+        </svg>
+        <label class="app-nav-logo-header-title">redd<span><span class="text">i</span><span class="marker"></span></span>t</label>
+    </div>
+
+    <ul class="app-nav-list">
+        <li class="app-nav-list-item" *ngFor="let nav of navs" [class.active]="nav.active">
+            <i [attr.class]="nav.icon"></i>
+            <label>{{nav.name}}</label>
+            <span class="app-nav-list-item-badge" *ngIf="nav.showBadge">{{nav.badge}}</span>
+        </li>
+    </ul>
+    <div class="app-nav-user">
+        <div class="app-nav-user-details">
+            <div class="app-nav-user-details-pic">
+                <img src="../src/assets/author-pic.png" />
+            </div>
+            <div class="app-nav-user-details-content">
+                <div class="app-nav-user-details-content-title">Asit</div>
+                <div class="app-nav-user-details-content-subtitle">asitparida@live.in</div>
+            </div>
+            <div class="app-nav-user-separator"></div>
+            <div class="app-nav-user-settings app-nav-list-item">
+                <i class="fa fa-envelope"></i>
+                <label>Inbox</label>
+            </div>
+            <div class="app-nav-user-settings app-nav-list-item">
+                <i class="fa fa-cog"></i>
+                <label>Settings</label>
+            </div>
+            <div class="app-nav-user-settings app-nav-list-item">
+                <i class="fa fa-sign-out"></i>
+                <label>log out</label>
+            </div>
+        </div>
+    </div>
+    <div class="app-nav-extra app-nav-list-item">
+        <i class="fa fa-copyright"></i> Lorem Ipsum, 2016
+    </div>
+</div>

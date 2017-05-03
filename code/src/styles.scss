@@ -1,5 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "fa-scss/variables";
+@import "fa-scss/mixins";
+@import "fa-scss/path";
+@import "fa-scss/core";
+@import "fa-scss/larger";
+@import "fa-scss/fixed-width";
+@import "fa-scss/list";
+@import "fa-scss/bordered-pulled";
+@import "fa-scss/animated";
+@import "fa-scss/rotated-flipped";
+@import "fa-scss/stacked";
+@import "fa-scss/icons";
+@import "fa-scss/screen-reader";
+
+
 body{
     margin: 0;
 }
