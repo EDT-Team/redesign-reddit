@@ -1,0 +1,15 @@
+.app{
+    &-content{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1{
+            color:#C0C0C0;
+            width:100%;
+            text-align: center;
+            font-family: 'Open sans', sans-serif;
+            font-weight: 100;
+        }
+    }
+}

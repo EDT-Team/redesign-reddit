@@ -1,0 +1,226 @@
+$app-logo-fill: #e74c3c;
+@mixin scrollbars($size, $foreground-color, $background-color) {
+     ::-webkit-scrollbar {
+        width: $size;
+        height: $size;
+    }
+     ::-webkit-scrollbar-thumb {
+        background: $foreground-color;
+    }
+     ::-webkit-scrollbar-track {
+        background: $background-color;
+    } // For Internet Explorer
+    .app-nav {
+        -ms-scrollbar-face-color: $foreground-color;
+        scrollbar-face-color: $foreground-color;
+        -ms-scrollbar-track-color: $background-color;
+        scrollbar-track-color: $background-color;
+    }
+}
+
+@include scrollbars(0.75em, #e0e0e0, #f0f0f0);
+.app {
+    &-nav {
+        position: relative;
+        &-expando{
+            position: absolute;
+            top: 30px;
+            right:-18px;
+            width:36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.15);
+            color:#909090;
+            transition: background-color 0.2s linear 0s, color 0.2s linear 0s;
+            cursor:pointer;
+            i{
+                line-height: 38px;
+                height: 36px;
+                width:35px;
+                text-align: center;
+                font-size: small;
+            }
+            &:hover{
+                 background-color: $app-logo-fill;
+                 color:#fff;
+            }
+        }
+        &-logo {
+            transform: scaleX(0.85);
+            vertical-align: middle;
+            &-header {
+                height: 60px;
+                padding: 15px 30px;
+                &-title {
+                    display: inline;
+                    text-transform: lowercase;
+                    vertical-align: middle;
+                    line-height: 60px;
+                    font-weight: 500;
+                    padding-left: 10px;
+                    font-size: xx-large;
+                    font-family: 'Ubuntu';
+                    color: #363636;
+                    span {
+                        vertical-align: top;
+                        position: relative;
+                        text-transform: uppercase;
+                        span.text {
+                            display: inline-block;
+                            transform: scaleX(0.50);
+                            color: $app-logo-fill;
+                        }
+                        span.marker {
+                            width: 10px;
+                            height: 10px;
+                            border-radius: 50%;
+                            background-color: $app-logo-fill;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                        }
+                    }
+                }
+            }
+            path {
+                &.eyes {
+                    fill: $app-logo-fill;
+                }
+            }
+        }
+        &-list {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            list-style: none;
+            height: calc(100vh - (90px + 6px + 300px));
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+            &-item {
+                width: 100%;
+                padding: 0 20px 0 25px;
+                height: 36px;
+                line-height: 36px;
+                margin: 0 0 12px 0;
+                box-sizing: border-box;
+                border-left: 5px solid transparent;
+                color: #909090;
+                &.active {
+                    color: $app-logo-fill;
+                    border-left: 5px solid $app-logo-fill;
+                }
+                i {
+                    width: 36px;
+                    text-align: center;
+                }
+                label {
+                    padding-left: 10px;
+                    width: calc(100% - 90px);
+                    display: inline-block;
+                    font-family: 'Open sans', sans-serif;
+                    text-transform: uppercase;
+                    font-size: small;
+                    font-weight: bold;
+                }
+                &-badge {
+                    display: inline-block;
+                    height: 24px;
+                    width: 24px;
+                    vertical-align: middle;
+                    line-height: 24px;
+                    border-radius: 50%;
+                    font-size: x-small;
+                    font-family: 'Open sans', sans-serif;
+                    font-weight: 600;
+                    background-color: $app-logo-fill;
+                    color: #fff;
+                    text-align: center;
+                }
+            }
+        }
+        &-extra {
+            margin: 6px 0;
+            line-height: 36px;
+            height: 36px;
+            border-left: none;
+            padding-left: 30px;
+            font-size: small;
+            font-family: 'Open sans', sans-serif;
+            i{
+                width:auto;
+                margin-right: 5px;
+            }
+        }
+        &-user {
+            height: 254px;
+            padding: 15px 30px;
+            box-sizing: border-box;
+            &-separator {
+                display: block;
+                width: 100%;
+                margin: 10px;
+            }
+            &-settings {
+                margin: 6px 0;
+                line-height: 36px;
+                height: 36px;
+                padding: 0;
+                border-left: none;                
+                i {
+                    width: 48px;
+                }
+            }
+            &-details {
+                box-sizing: border-box;
+                height: 100%;
+                width: 100%;
+                background-color: #f3f3f3;
+                padding: 20px 20px 0 20px;
+                &-pic {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    display: inline-block;
+                    vertical-align: top;
+                    img {
+                        height: 48px;
+                        width: 48px;
+                    }
+                }
+                &-content {
+                    width: calc(100% - 52px);
+                    box-sizing: border-box;
+                    display: inline-block;
+                    padding-left: 10px;
+                    vertical-align: top;
+                    position: relative;
+                    top: -4px;
+                    color: #565656;
+                    &-title {
+                        width: 100%;
+                        line-height: 40px;
+                        height: 36px;
+                        font-size: medium;
+                        font-family: 'Open Sans', sans-serif;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                    }
+                    &-subtitle {
+                        width: 100%;
+                        line-height: 12px;
+                        height: 16px;
+                        font-size: small;
+                        font-family: 'Open Sans', sans-serif;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+}
