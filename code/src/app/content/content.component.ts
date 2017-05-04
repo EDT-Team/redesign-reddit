@@ -2,6 +2,7 @@ import {
     Component,
     AfterViewInit
 } from '@angular/core';
+import { MdSelectModule } from '@angular/material';
 import * as _ from 'underscore';
 
 export class ContentItemAuthor {
@@ -37,7 +38,7 @@ export class ContentItem {
         ]);
         this.link = _.sample<string>([
             'itv.com',
-            'imgur.com' 
+            'imgur.com'
         ]);
         this.rating = _.sample<number>(_.range(100, 1000));
         this.author = new ContentItemAuthor();
@@ -50,6 +51,7 @@ export class ContentItem {
     styleUrls: ['./content.component.scss']
 })
 export class ContentComponent {
+    currentCategory: string = 'Controversial';
     items: ContentItem[] = [
         new ContentItem(),
         new ContentItem(),
@@ -68,4 +70,12 @@ export class ContentComponent {
         new ContentItem(),
         new ContentItem()
     ];
+    durations = [
+        { value: 'hours', viewValue: 'Past 6 hours' },
+        { value: 'day', viewValue: 'In last day' },
+        { value: 'month', viewValue: 'In last month' },
+        { value: 'year', viewValue: 'In last year' },
+        { value: 'dawn', viewValue: 'since dawn of time' }
+    ];
+    selectedDuration =  this.durations[0];
 }
