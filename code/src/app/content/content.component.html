@@ -1,3 +1,51 @@
 <div class="app-content">
-    <h1>Hi <br />We are working on designing the content ... </h1>
+    <div class="app-content-header">
+        <div class="pull-left">
+            <label class="app-content-header-category">{{currentCategory}}</label>
+            <div ngbDropdown class="d-inline-block app-content-header-duration-switcher">
+                <button class="btn btn-outline-primary app-content-header-duration-switcher-toggle" id="dropdownBasic1" ngbDropdownToggle>{{selectedDuration.viewValue}}</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
+                    <button class="dropdown-item" *ngFor="let item of durations" (click)="selectedDuration = item;">{{item.viewValue}}</button>
+                </div>
+            </div>
+        </div>
+        <div class="pull-right">
+            <div class="app-content-header-new">
+                <i class="fa fa-link"></i> New Link
+            </div>
+            <div class="app-content-header-new">
+                <i class="fa fa-file-text-o"></i> New Post
+            </div>
+            <div class="app-content-header-search-container">
+                <i class="fa fa-search"></i>
+                <input class="app-content-header-search" placeholder="keyword, tokens, categories" />
+            </div>
+        </div>
+    </div>
+    <div class="app-content-body">
+        <div class="app-content-body-main">
+            <div class="app-content-body-main-item-holder">
+                <div class="app-content-body-main-item" *ngFor="let item of items">
+                    <div class="app-content-body-main-item-pic-container">
+                        <img class="app-content-body-main-item-pic" [attr.src]="item.picture" />
+                    </div>
+                    <div class="app-content-body-main-item-text-container">
+                        <a class="app-content-body-main-item-text-link" [attr.href]="item.link">{{item.link}}</a>
+                        <label class="app-content-body-main-item-text-upper">{{item.text}}</label>
+                        <label class="app-content-body-main-item-text-lower">submitted 4 hours ago by <a>{{item.author?.name}}</a></label>
+                    </div>
+                    <div class="app-content-body-main-item-actions-container">
+                        <div class="app-content-body-main-item-actions-menu">
+                            <i class="fa fa-ellipsis-v"></i>
+                        </div>
+                        <div class="app-content-body-main-item-actions-rating">
+                            <i class="fa fa-caret-up top"></i>
+                            <span>{{item.rating}}</span>
+                            <i class="fa fa-caret-down down"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

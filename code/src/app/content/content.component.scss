@@ -1,15 +1,318 @@
-.app{
-    &-content{
+$app-logo-fill: #e74c3c;
+@mixin scrollbars($size, $foreground-color, $background-color) {
+     ::-webkit-scrollbar {
+        width: $size;
+        height: $size;
+    }
+     ::-webkit-scrollbar-thumb {
+        background: $foreground-color;
+    }
+     ::-webkit-scrollbar-track {
+        background: $background-color;
+    } // For Internet Explorer
+    .app-nav {
+        -ms-scrollbar-face-color: $foreground-color;
+        scrollbar-face-color: $foreground-color;
+        -ms-scrollbar-track-color: $background-color;
+        scrollbar-track-color: $background-color;
+    }
+}
+
+.app {
+    &-content {
         height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        h1{
-            color:#C0C0C0;
-            width:100%;
+        h1 {
+            color: #C0C0C0;
+            width: 100%;
             text-align: center;
             font-family: 'Open sans', sans-serif;
             font-weight: 100;
+        }
+        &-header {
+            height: 65px;
+            padding: 20px 15px 0 55px;
+            &-new {
+                line-height: 34px;
+                margin-top: 6px;
+                padding: 0 15px;
+                font-size: small;
+                font-family: 'Open sans', sans-serif;
+                border-radius: 5px;
+                box-shadow: 0 0 0 0 #fff;
+                background-color: #fff;
+                text-transform: capitalize;
+                color: #303030;
+                border: 2px solid #fff;
+                margin-right: 15px;
+                min-width: 100px;
+                float: left;
+                border-radius: 25px;
+                box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.05);
+                box-sizing: border-box;
+                transition: background-color 0.2s linear 0s, color 0.2s linear 0s, border-color 0.2s linear 0s;
+                cursor: pointer;
+                &:focus,
+                &:hover{
+                    background-color: $app-logo-fill;
+                    border-colOR: $app-logo-fill;
+                    color:#fff;
+                }
+                i {
+                    font-size: small;
+                    margin-right: 7px;
+                }
+            }
+            &-search {
+                box-shadow: none;
+                border: none;
+                outline: none;
+                line-height: 34px;
+                width: calc(100% - 36px);
+                float: right;
+                background: transparent;
+                font-family: 'Open sans', sans-serif;
+                font-size: small;
+                &:-moz-placeholder,
+                &:-ms-input-placeholder,
+                &::-moz-placeholder,
+                &::-webkit-input-placeholder {
+                    color: #A0A0A0;
+                    opacity: .75;
+                    filter: alpha(opacity=75);
+                }
+                &-container {
+                    width: 450px;
+                    max-width: 50vw;
+                    background: #fff;
+                    height: 36px;
+                    margin-top: 6px;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.05);
+                    float: left;
+                    .fa-search {
+                        width: 36px;
+                        height: 36px;
+                        text-align: center;
+                        line-height: 36px;
+                        float: left;
+                        color: #A0A0A0;
+                        font-size: small;
+                    }
+                }
+            }
+            &-category {
+                line-height: 48px;
+                height: 48px;
+                font-family: 'Open sans', sans-serif;
+                font-weight: 500;
+                margin: 0 20px 0 0;
+                vertical-align: middle;
+            }
+            &-duration-switcher {
+                &.show {
+                    .app-content-header-duration-switcher-toggle {
+                        background: transparent;
+                        color: $app-logo-fill;
+                    }
+                }
+                &-toggle {
+                    border: none;
+                    background: none;
+                    font-family: 'Open sans', sans-serif;
+                    font-size: small;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    color: $app-logo-fill;
+                    padding: 0 15px;
+                    margin: 0;
+                    line-height: 48px;
+                    box-shadow: none;
+                    outline: none;
+                    cursor: pointer;
+                    border-radius: 0;
+                    &:after {
+                        margin-left: 10px;
+                        position: relative;
+                        top: -1px;
+                    }
+                }
+                .dropdown-menu {
+                    border: none;
+                    margin: 0;
+                    padding: 0;
+                    border-radius: 0;
+                    box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);
+                    background-color: #fff;
+                    button {
+                        margin: 0;
+                        padding: 0 15px;
+                        line-height: 48px;
+                        min-width: 100px;
+                        font-family: 'Open sans', sans-serif;
+                        font-size: small;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        color: #707070;
+                        cursor: pointer;
+                        transition: background-color 0.2s linear 0s;
+                        &:hover,
+                        &:focus,
+                        &:active {
+                            color: #565656;
+                            ;
+                            background: #f0f0f0;
+                        }
+                    }
+                }
+            }
+        }
+        &-body {
+            height: calc(100% - 70px);
+            padding: 20px 15px 0 15px;
+            box-sizing: border-box;
+            @include scrollbars(0.50em, #C0C0C0, #E6E6E6);
+            &-main {
+                padding: 0 15px;
+                box-sizing: border-box;
+                width: 100%;
+                height: 100%;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                -ms-overflow-style: -ms-autohiding-scrollbar;
+                &-item {
+                    width: 100%;
+                    min-height: 75px;
+                    padding: 0 25px;
+                    margin-bottom: 25px;
+                    box-sizing: border-box;
+                    &:after {
+                        content: ' ';
+                        clear: both;
+                    }
+                    &:last-child {
+                        padding-bottom: 25px;
+                        margin-bottom: 0;
+                    }
+                    &-holder {
+                        width: 100%;
+                        padding: 25px 0;
+                        margin-bottom: 25px;
+                        box-sizing: border-box;
+                        height: auto;
+                        background: #fff;
+                        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.10);
+                    }
+                    &-pic {
+                        width: 100%;
+                        height: 100%;
+                        &-container {
+                            width: 120px;
+                            height: 75px;
+                            float: left;
+                        }
+                    }
+                    &-text {
+                        &-link {
+                            font-size: small;
+                            font-family: 'Open sans', sans-serif;
+                            padding: 0 8px;
+                            background-color: lighten($app-logo-fill, 40);
+                            color: #909090;
+                            border-radius: 5px;
+                            text-decoration: none;
+                            display: inline-block;
+                            height: 22px;
+                            line-height: 22px;
+                            cursor: pointer;
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                        &-upper {
+                            font-family: 'Open sans', sans-serif;
+                            width: 100%;
+                            overflow-x: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            display: block;
+                            line-height: 30px;
+                            height: 30px;
+                        }
+                        &-lower {
+                            font-family: 'Open sans', sans-serif;
+                            width: 100%;
+                            font-size: small;
+                            color: #A0A0A0;
+                            display: inline-block;
+                            height: 22px;
+                            line-height: 22px;
+                            a {
+                                text-decoration: none;
+                                color: #0073c6;
+                                cursor: pointer;
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                        &-container {
+                            width: calc(100% - 216px);
+                            height: 75px;
+                            padding: 0 25px;
+                            float: left;
+                            box-sizing: border-box;
+                        }
+                    }
+                    &-actions {
+                        &-container {
+                            width: 96px;
+                            height: 75px;
+                            float: right;
+                        }
+                        &-menu {
+                            width: 36px;
+                            height: 75px;
+                            line-height: 75px;
+                            float: left;
+                            text-align: center;
+                            color: #C6C6C6;
+                            ;
+                        }
+                        &-rating {
+                            width: 60px;
+                            float: right;
+                            color: #909090;
+                            i {
+                                width: 60px;
+                                height: 24px;
+                                line-height: 24px;
+                                display: block;
+                                text-align: center;
+                                color: #C6C6C6;
+                                &.top {
+                                    position: relative;
+                                    top: 3px;
+                                }
+                                &.down {
+                                    position: relative;
+                                    top: -3px;
+                                }
+                            }
+                            span {
+                                width: 60px;
+                                height: 27px;
+                                line-height: 27px;
+                                text-align: center;
+                                display: block;
+                                font-size: medium;
+                                font-weight: 500;
+                                font-family: 'Open sans', sans-serif;
+                                color: #606060;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
