@@ -34,10 +34,11 @@ export class NavComponent {
     new NavItem('rising', 'fa fa-thumbs-up'),
     new NavItem('controversial', 'fa fa-user-secret'),
     new NavItem('top', 'fa fa-star'),
+    new NavItem('gilded', 'fa fa-glass'),
     new NavItem('wiki', 'fa fa-telegram'),
     new NavItem('promoted', 'fa fa-bullhorn')
   ];
   constructor(){
-    this.navs[1].active = true;
+    this.navs[3].active = true;
   }
 }
