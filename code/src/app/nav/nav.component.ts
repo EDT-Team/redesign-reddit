@@ -1,7 +1,10 @@
 import {
-  Component
+  Component,
+  Input,
+  AfterViewInit
 } from '@angular/core';
 import * as _ from 'underscore';
+import { AppLayout } from '../models/app.models';
 
 
 class NavItem {
@@ -15,7 +18,7 @@ class NavItem {
   constructor(name: string, icon: string) {
     this.id = _.uniqueId('_NAV_');
     this.name = name;
-    this.icon = icon; 
+    this.icon = icon;
     this.badge = _.sample<number>(_.range(0, 100));
     this.showBadge = _.sample<boolean>([true, false, false]);
   }
@@ -27,7 +30,8 @@ class NavItem {
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent {
+export class NavComponent implements AfterViewInit {
+  APP_LAYOUT_TYPES = AppLayout;
   navs: NavItem[] = [
     new NavItem('hot', 'fa fa-fire'),
     new NavItem('new', 'fa fa-plus-square'),
@@ -38,7 +42,32 @@ export class NavComponent {
     new NavItem('wiki', 'fa fa-telegram'),
     new NavItem('promoted', 'fa fa-bullhorn')
   ];
-  constructor(){
+
+  @Input()
+  config: any;
+
+  currentLayout: AppLayout = AppLayout.EXPANDED;
+
+  constructor() {
+    let self = this;
     this.navs[3].active = true;
   }
+
+  ngAfterViewInit() {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    let self = this;
+    this.config.loadForLayout = function (layout: AppLayout) {
+      self.currentLayout = layout;
+    }
+  }
+
+  toggleLayout() {
+    if (this.currentLayout === AppLayout.EXPANDED)
+      this.currentLayout = AppLayout.COLLAPSED;
+    else
+      this.currentLayout = AppLayout.EXPANDED;      
+    this.config.changeLayout(this.currentLayout);
+  }
+
 }

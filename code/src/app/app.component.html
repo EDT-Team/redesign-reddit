@@ -36,11 +36,11 @@
         </div>
     </div>
     <div class="app-drawer" [attr.id]="appDrawerId">
-        <div class="app-drawer-nav">
-            <app-nav></app-nav>
+        <div class="app-drawer-nav" [class.collapsed]="currentLayout === APP_LAYOUT_TYPES.COLLAPSED">
+            <app-nav [(config)]="navConfig"></app-nav>
         </div>
         <div class="app-drawer-content">
-            <app-content></app-content>
+            <app-content [(config)]="contentConfig"></app-content>
         </div>
     </div>
 </div>

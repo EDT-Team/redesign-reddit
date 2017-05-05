@@ -47,6 +47,9 @@
                 position: relative;
                 z-index: 2;
                 height: 100%;
+                &.collapsed{
+                    width: 48px;
+                }
             }
             &-content{
                 flex: 1;

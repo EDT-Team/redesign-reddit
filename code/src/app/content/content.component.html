@@ -31,17 +31,24 @@
                     </div>
                     <div class="app-content-body-main-item-text-container">
                         <a class="app-content-body-main-item-text-link" [attr.href]="item.link">{{item.link}}</a>
-                        <label class="app-content-body-main-item-text-upper">{{item.text}}</label>
                         <label class="app-content-body-main-item-text-lower">submitted 4 hours ago by <a>{{item.author?.name}}</a></label>
+                        <label class="app-content-body-main-item-text-upper" [class.curtail]="item.type == types.LINK">{{item.text}}</label>
                     </div>
                     <div class="app-content-body-main-item-actions-container">
-                        <div class="app-content-body-main-item-actions-menu">
-                            <i class="fa fa-ellipsis-v"></i>
+                        <div class="app-content-body-main-item-actions-menu">                            
+                            <div ngbDropdown class="d-inline-block app-content-body-main-item-actions-menu-control">
+                                <button class="btn btn-outline-primary app-content-body-main-item-actions-menu-control-toggle" id="dropdownBasic2" ngbDropdownToggle>
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownBasic2">
+                                    <button class="dropdown-item" *ngFor="let action of actions" (click)="takeAction(item, action)">{{action.name}} <i [class]="action.icon"></i></button>
+                                </div>
+                            </div>
                         </div>
                         <div class="app-content-body-main-item-actions-rating">
-                            <i class="fa fa-caret-up top"></i>
+                            <i class="fa fa-caret-up top" (click)="item.incrementRating()"></i>
                             <span>{{item.rating}}</span>
-                            <i class="fa fa-caret-down down"></i>
+                            <i class="fa fa-caret-down down" (click)="item.decrementRating()"></i>
                         </div>
                     </div>
                 </div>
