@@ -26,6 +26,67 @@
                             fill: $app-logo-fill;
                         }
                     }
+                    g{
+
+                        @keyframes loader-leg-left-anim {
+                            10% {
+                                transform: rotate(0deg);
+                            }
+                            20%{
+                                transform: rotate(-25deg);
+                            }
+                            30%{
+                                transform: rotate(0deg);
+                            }
+                            40%{
+                                transform: rotate(0deg);
+                            }
+                            50%{
+                                transform: rotate(-50deg);
+                            }
+                            60%{
+                                transform: rotate(0deg);
+                            }
+                            100%{
+                                transform: rotate(0deg);
+                            }
+                        }
+
+                        @keyframes loader-leg-right-anim {
+                            10% {
+                                transform: rotate(0deg);
+                            }
+                            20%{
+                                transform: rotate(25deg);
+                            }
+                            30%{
+                                transform: rotate(0deg);
+                            }
+                            40%{
+                                transform: rotate(0deg);
+                            }
+                            50%{
+                                transform: rotate(50deg);
+                            }
+                            60%{
+                                transform: rotate(0deg);
+                            }
+                            100%{
+                                transform: rotate(0deg);
+                            }
+                        }
+
+                        &[data-tag="loader-leg-left"]{
+                            transform-origin: top right;
+                            transform: rotate(0deg);
+                            animation: loader-leg-left-anim 2s linear infinite;
+                        }
+                        &[data-tag="loader-leg-right"]{
+                            transform-origin: top left;
+                            transform: rotate(0deg);
+                            animation: loader-leg-right-anim 2s linear infinite;
+                        }
+                    }
                 }
             }
         }
