@@ -1,7 +1,8 @@
 import {
   Component,
   Input,
-  AfterViewInit
+  AfterViewInit,
+  OnInit
 } from '@angular/core';
 import * as _ from 'underscore';
 import { AppLayout } from '../models/app.models';
@@ -30,7 +31,7 @@ class NavItem {
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent implements AfterViewInit {
+export class NavComponent implements AfterViewInit, OnInit {
   APP_LAYOUT_TYPES = AppLayout;
   navs: NavItem[] = [
     new NavItem('hot', 'fa fa-fire'),
@@ -46,16 +47,18 @@ export class NavComponent implements AfterViewInit {
   @Input()
   config: any;
 
-  currentLayout: AppLayout = AppLayout.EXPANDED;
+  currentLayout: AppLayout;
 
   constructor() {
     let self = this;
     this.navs[3].active = true;
   }
 
+  ngOnInit(){
+    this.currentLayout = this.config.initialLayout;
+  }
+
   ngAfterViewInit() {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
     let self = this;
     this.config.loadForLayout = function (layout: AppLayout) {
       self.currentLayout = layout;

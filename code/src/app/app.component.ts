@@ -20,13 +20,20 @@ export class AppComponent implements AfterViewInit {
   appDrawerId: string = DEFS.GenerateId();
   navConfig: any = {};
   contentConfig: any = {};
-  currentLayout: AppLayout = AppLayout.EXPANDED;
+  currentLayout: AppLayout;
   constructor() {
     let self = this;
     self.navConfig.changeLayout = function (layout: AppLayout) {
       self.currentLayout = layout;
       console.log(layout);
     }
+   if(window.innerWidth < 1024) {
+      self.currentLayout = AppLayout.COLLAPSED;
+    }
+    else {
+      self.currentLayout = AppLayout.EXPANDED;
+    }
+    self.navConfig.initialLayout = self.currentLayout;
   }
   ngAfterViewInit() {
     let self = this;
@@ -38,7 +45,7 @@ export class AppComponent implements AfterViewInit {
         _loader.style.display = 'NONE';
         _drawer.style.opacity = '1';
       });
-    }, 1500)
+    }, 1500);
   }
   adaptLayoutForWidthChange(){
     let self  = this;

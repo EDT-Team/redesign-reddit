@@ -36,7 +36,8 @@
         </div>
     </div>
     <div class="app-drawer" [attr.id]="appDrawerId">
-        <div class="app-drawer-nav" [class.collapsed]="currentLayout === APP_LAYOUT_TYPES.COLLAPSED">
+        <div class="app-drawer-nav-bg" [hidden]="currentLayout === APP_LAYOUT_TYPES.COLLAPSED"></div>
+        <div class="app-drawer-nav" [class.collapsed]="currentLayout === APP_LAYOUT_TYPES.COLLAPSED" [class.expanded]="currentLayout === APP_LAYOUT_TYPES.EXPANDED">
             <app-nav [(config)]="navConfig"></app-nav>
         </div>
         <div class="app-drawer-content">

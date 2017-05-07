@@ -1,3 +1,5 @@
+    @import '../mixins';
+ 
     $app-logo-fill: #e74c3c;
     
     .app {
@@ -45,10 +47,30 @@
                 background:#fff;
                 box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.10);
                 position: relative;
-                z-index: 2;
+                z-index: 3;
                 height: 100%;
+                &-bg{
+                    position: absolute;
+                    z-index: 2;
+                    display: none;
+                    @include respond-to-desktop() {
+                        display: block;
+                        width:100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.75);
+                    }
+                }
+                &.expanded{
+                    @include respond-to-desktop() {
+                        position: absolute;
+                    }
+                }
+
                 &.collapsed{
                     width: 48px;
+                    @include respond-to-desktop() {
+                        width: 0;
+                    }
                 }
             }
             &-content{
