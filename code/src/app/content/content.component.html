@@ -20,9 +20,25 @@
                 <i class="fa fa-search"></i>
                 <input class="app-content-header-search" placeholder="keyword, tokens, categories" />
             </div>
+            <div class="app-content-header-sublinks-container">
+                <div ngbDropdown class="d-inline-block app-content-header-sublinks">
+                    <button class="btn btn-outline-primary app-content-header-sublinks-toggle" id="dropdownBasic3" ngbDropdownToggle>My Subreddits</button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownBasic3">
+                        <button class="dropdown-item" *ngFor="let item of subreddits" (click)="launchSubReddit(item)">{{item}}</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="app-content-body">
+        <div class="app-content-body-ad" [attr.id]="mainAd">
+            <div class="app-content-body-ad-inner">
+                <div class="app-content-body-ad-inner-watermark">sponsored</div>
+                <div class="app-content-body-ad-inner-dismiss" (click)="dismissAd()">
+                    <i class="fa fa-close"></i>
+                </div>
+            </div>
+        </div>
         <div class="app-content-body-main">
             <div class="app-content-body-main-item-holder">
                 <div class="app-content-body-main-item" *ngFor="let item of items">
@@ -35,7 +51,7 @@
                         <label class="app-content-body-main-item-text-upper" [class.curtail]="item.type == types.LINK">{{item.text}}</label>
                     </div>
                     <div class="app-content-body-main-item-actions-container">
-                        <div class="app-content-body-main-item-actions-menu">                            
+                        <div class="app-content-body-main-item-actions-menu">
                             <div ngbDropdown class="d-inline-block app-content-body-main-item-actions-menu-control">
                                 <button class="btn btn-outline-primary app-content-body-main-item-actions-menu-control-toggle" id="dropdownBasic2" ngbDropdownToggle>
                                     <i class="fa fa-ellipsis-v"></i>

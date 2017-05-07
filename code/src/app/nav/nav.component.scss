@@ -204,6 +204,7 @@ $app-logo-fill: #e74c3c;
             list-style: none;
             height: calc(100vh - (90px + 18px + 240px));
             overflow-y: auto;
+            overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
             -ms-overflow-style: -ms-autohiding-scrollbar;
             &-item {
@@ -282,7 +283,7 @@ $app-logo-fill: #e74c3c;
             &-separator {
                 display: block;
                 width: 100%;
-                margin: 10px;
+                margin: 15px 0;
             }
             &-settings {
                 margin: 6px 0;
