@@ -1,3 +1,6 @@
+<div class="app-nav-hamburger" [class.show]="currentLayout === APP_LAYOUT_TYPES.COLLAPSED" (click)="toggleLayout()">
+        <i class="fa fa-bars"></i>
+    </div>
 <div class="app-nav" [class.collapsed]="currentLayout === APP_LAYOUT_TYPES.COLLAPSED">
     <div class="app-nav-expando" (click)="toggleLayout()">
         <i class="fa fa-chevron-left" [class.flip]="currentLayout === APP_LAYOUT_TYPES.COLLAPSED"></i>        

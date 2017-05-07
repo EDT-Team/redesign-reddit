@@ -67,7 +67,7 @@ export class ContentItem {
     styleUrls: ['./content.component.scss']
 })
 export class ContentComponent {
-
+    
     @Input()
     config: any;
 

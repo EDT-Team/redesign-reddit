@@ -1,3 +1,5 @@
+@import '../../mixins';
+
 $app-logo-fill: #e74c3c;
 @mixin scrollbars($size, $foreground-color, $background-color) {
      ::-webkit-scrollbar {
@@ -21,7 +23,36 @@ $app-logo-fill: #e74c3c;
 @include scrollbars(0.50em, #e0e0e0, #f0f0f0);
 .app {
     &-nav {
+        &.collapsed{
+            @include respond-to-desktop() {
+                display: none;
+            }
+        }
         position: relative;
+
+        &-hamburger {
+            display: none;
+            line-height: 36px;
+                            width: 36px;
+                            text-align: center;
+                            height: 36px;
+                            position: absolute;
+                            top:26px;
+                            left:6px;
+                            font-size: small;
+                            color:#909090;
+                            cursor:pointer;
+                            background: transparent;
+                            border-radius: 50%;
+                            &:hover{
+                                color:$app-logo-fill;
+                            }
+                            &.show{
+                                @include respond-to-desktop() {
+                    display: block;
+                }
+                            }
+        }
         &.collapsed {
             .app {
                 &-nav {
@@ -30,10 +61,9 @@ $app-logo-fill: #e74c3c;
                         right: -24px;
                         background: #fff;
                         box-shadow: 2px 0 5px 1px rgba(0, 0, 0, 0.15);
-                        &:hover {
                             background-color: $app-logo-fill;
                             color: #fff;
-                        }
+                        
                     }
                     &-extra {
                         span {
@@ -179,9 +209,9 @@ $app-logo-fill: #e74c3c;
             &-item {
                 width: 100%;
                 padding: 0 20px 0 25px;
-                height: 36px;
-                line-height: 36px;
-                margin: 0 0 12px 0;
+                height: 42px;
+                line-height: 42px;
+                margin: 0;
                 box-sizing: border-box;
                 border-left: 5px solid transparent;
                 color: #909090;

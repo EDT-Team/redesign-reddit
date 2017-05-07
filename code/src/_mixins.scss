@@ -1,0 +1,7 @@
+$break-desktop: 1024px;
+
+@mixin respond-to-desktop() {
+     @media (max-width: $break-desktop - 1) {
+            @content;
+    }
+}
