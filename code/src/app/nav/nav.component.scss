@@ -216,6 +216,9 @@ $app-logo-fill: #e74c3c;
                 border-left: 5px solid transparent;
                 color: #909090;
                 cursor:pointer;
+                &:hover{
+                    color: $app-logo-fill;
+                }
                 &:last-child {
                     margin-bottom: 0;
                 }
