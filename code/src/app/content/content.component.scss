@@ -13,17 +13,16 @@ $app-logo-fill: #e74c3c;
             font-weight: 100;
         }
         &-watermark{
-            font-size: small;
+            font-size: x-small;
             font-family: 'Open sans', sans-serif;
-            opacity: 0.33;
+            opacity: 0.20;
             position: absolute;
             text-transform: uppercase;            
             color: #303030;
             padding: 2px 4px;
             letter-spacing: 2px;
             top:0;
-            width:100%;
-            text-align: center;            
+            left:40px;
             pointer-events: none;
             font-weight: bold;
         }
@@ -36,8 +35,8 @@ $app-logo-fill: #e74c3c;
                 padding: 0 15px;
                 font-size: small;
                 font-family: 'Open sans', sans-serif;
+                // box-shadow: 0 0 0 0 #fff;
                 border-radius: 5px;
-                box-shadow: 0 0 0 0 #fff;
                 background-color: #fff;
                 text-transform: capitalize;
                 color: #303030;
@@ -45,7 +44,6 @@ $app-logo-fill: #e74c3c;
                 margin-right: 15px;
                 min-width: 100px;
                 float: left;
-                border-radius: 25px;
                 box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.05);
                 box-sizing: border-box;
                 transition: background-color 0.2s linear 0s, color 0.2s linear 0s, border-color 0.2s linear 0s;
