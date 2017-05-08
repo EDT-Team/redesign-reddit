@@ -12,6 +12,21 @@ $app-logo-fill: #e74c3c;
             font-family: 'Open sans', sans-serif;
             font-weight: 100;
         }
+        &-watermark{
+            font-size: small;
+            font-family: 'Open sans', sans-serif;
+            opacity: 0.33;
+            position: absolute;
+            text-transform: uppercase;            
+            color: #303030;
+            padding: 2px 4px;
+            letter-spacing: 2px;
+            top:0;
+            width:100%;
+            text-align: center;            
+            pointer-events: none;
+            font-weight: bold;
+        }
         &-header {
             height: 65px;
             padding: 20px 50px 0 45px;
@@ -250,10 +265,10 @@ $app-logo-fill: #e74c3c;
                 display: block;
                 overflow: hidden;
                 padding: 0 0 0 15px;
-                margin-bottom: 15px;
                 transition: height 0.5s ease-in 0.2s;
                 &.show{
                     height: 250px;
+                    margin-bottom: 15px;
                 }
                 &-inner{
                     background: $app-logo-fill;

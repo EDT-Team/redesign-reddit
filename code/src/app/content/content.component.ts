@@ -104,7 +104,7 @@ export class ContentComponent implements AfterViewInit {
             if (_ad) {
                 _ad.classList.add('show');
             }
-        }, 2500);
+        }, 6500);
     }
     takeAction(item: ContentItem, action: any) {
         console.log(item, action);
@@ -116,8 +116,7 @@ export class ContentComponent implements AfterViewInit {
         let self = this;
         let _ad: HTMLElement = document.getElementById(self.mainAd);
         if (_ad) {
-            _ad.classList.remove('show');
-            // _ad.style.display = 'NONE';
+            _ad.classList.remove('show');            
         }
     }
 }

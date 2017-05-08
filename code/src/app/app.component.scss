@@ -1,16 +1,13 @@
     @import '../mixins';
- 
     $app-logo-fill: #e74c3c;
-    
     .app {
         height: 100vh;
         width: 100%;
         overflow: hidden;
-    
         &-loader {
             position: absolute;
             z-index: 9999;
-            top:0;
+            top: 0;
             left: 0;
             background-color: $app-logo-fill;
             height: 100%;
@@ -18,70 +15,91 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            
             &-inner {
+                @keyframes up-down-jump {
+                    10% {
+                        transform: translateY(0);
+                    }
+                    20% {
+                        transform: translateY(25px);
+                    }
+                    30% {
+                        transform: translateY(0);
+                    }
+                    40% {
+                        transform: translateY(0);
+                    }
+                    50% {
+                        transform: translateY(50px);
+                    }
+                    60% {
+                        transform: translateY(0);
+                    }
+                    100% {
+                        transform: translateY(0);
+                    }
+                }
                 svg {
+                    transform: translateY(0);
+                    animation: up-down-jump 2s ease-out infinite;
                     path {
                         &.eyes {
                             fill: $app-logo-fill;
                         }
                     }
-                    g{
-
+                    g {
                         @keyframes loader-leg-left-anim {
                             10% {
                                 transform: rotate(0deg);
                             }
-                            20%{
+                            20% {
                                 transform: rotate(-25deg);
                             }
-                            30%{
+                            30% {
                                 transform: rotate(0deg);
                             }
-                            40%{
+                            40% {
                                 transform: rotate(0deg);
                             }
-                            50%{
+                            50% {
                                 transform: rotate(-50deg);
                             }
-                            60%{
+                            60% {
                                 transform: rotate(0deg);
                             }
-                            100%{
+                            100% {
                                 transform: rotate(0deg);
                             }
                         }
-
                         @keyframes loader-leg-right-anim {
                             10% {
                                 transform: rotate(0deg);
                             }
-                            20%{
+                            20% {
                                 transform: rotate(25deg);
                             }
-                            30%{
+                            30% {
                                 transform: rotate(0deg);
                             }
-                            40%{
+                            40% {
                                 transform: rotate(0deg);
                             }
-                            50%{
+                            50% {
                                 transform: rotate(50deg);
                             }
-                            60%{
+                            60% {
                                 transform: rotate(0deg);
                             }
-                            100%{
+                            100% {
                                 transform: rotate(0deg);
                             }
                         }
-
-                        &[data-tag="loader-leg-left"]{
+                        &[data-tag="loader-leg-left"] {
                             transform-origin: top right;
                             transform: rotate(0deg);
                             animation: loader-leg-left-anim 2s linear infinite;
                         }
-                        &[data-tag="loader-leg-right"]{
+                        &[data-tag="loader-leg-right"] {
                             transform-origin: top left;
                             transform: rotate(0deg);
                             animation: loader-leg-right-anim 2s linear infinite;
@@ -90,8 +108,7 @@
                 }
             }
         }
-
-        &-drawer{
+        &-drawer {
             opacity: 0;
             height: 100vh;
             width: 100%;
@@ -100,41 +117,39 @@
             z-index: 1;
             position: relative;
             display: none;
-
-            &-nav{
+            &-nav {
                 flex: initial;
-                width:300px;
+                width: 300px;
                 order: 1;
-                background:#fff;
+                background: #fff;
                 box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.10);
                 position: relative;
                 z-index: 3;
                 height: 100%;
-                &-bg{
+                &-bg {
                     position: absolute;
                     z-index: 2;
                     display: none;
                     @include respond-to-desktop() {
                         display: block;
-                        width:100%;
+                        width: 100%;
                         height: 100%;
                         background: rgba(0, 0, 0, 0.75);
                     }
                 }
-                &.expanded{
+                &.expanded {
                     @include respond-to-desktop() {
                         position: absolute;
                     }
                 }
-
-                &.collapsed{
+                &.collapsed {
                     width: 48px;
                     @include respond-to-desktop() {
                         width: 0;
                     }
                 }
             }
-            &-content{
+            &-content {
                 flex: 1;
                 order: 2;
                 background: #f3f3f3;
