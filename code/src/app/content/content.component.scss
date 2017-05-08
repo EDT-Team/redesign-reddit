@@ -263,7 +263,8 @@ $app-logo-fill: #e74c3c;
                 display: block;
                 overflow: hidden;
                 padding: 0 0 0 15px;
-                transition: height 0.5s ease-in 0.2s;
+                margin: 0;
+                transition: height 0.3s ease-in 0.2s, margin 0.3s ease-in 0.2s;
                 &.show{
                     height: 250px;
                     margin-bottom: 15px;
@@ -457,6 +458,14 @@ $app-logo-fill: #e74c3c;
                                     border-radius: 0;
                                     &:after {
                                         display: none;
+                                    }
+                                    &:hover{
+                                        background: transparent;
+                                        color: $app-logo-fill;
+                                    }
+                                    &:focus{
+                                        box-shadow: none;
+                                        outline: 1px dotted rgba(0,0,0, 0.20);
                                     }
                                 }
                                 .dropdown-menu {
