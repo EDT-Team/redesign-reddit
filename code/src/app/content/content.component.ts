@@ -51,11 +51,11 @@ export class ContentItem {
         this.author = new ContentItemAuthor();
         this.type = _.sample<ContentType>([ContentType.LINK, ContentType.TEXT]);
     }
-    decrementRating(){
+    decrementRating() {
         this.rating = this.rating - 1;
         this.rating = this.rating <= 0 ? 0 : this.rating;
     }
-    incrementRating(){
+    incrementRating() {
         this.rating = this.rating - 1;
         this.rating = this.rating <= 0 ? 0 : this.rating;
     }
@@ -66,11 +66,11 @@ export class ContentItem {
     templateUrl: './content.component.html',
     styleUrls: ['./content.component.scss']
 })
-export class ContentComponent {
-    
+export class ContentComponent implements AfterViewInit {
+
     @Input()
     config: any;
-
+    mainAd: string = _.uniqueId('_AD_');
     currentCategory: string = 'Controversial';
     items: ContentItem[] = [];
     durations = [
@@ -80,21 +80,43 @@ export class ContentComponent {
         { value: 'year', viewValue: 'In last year' },
         { value: 'dawn', viewValue: 'since dawn of time' }
     ];
+    selectedDuration = this.durations[0];
     actions = [
         { icon: 'fa fa-share-alt', name: 'share' },
         { icon: 'fa fa-eye-slash', name: 'hide' },
-        { icon: 'fa fa-floppy-o', name: 'save' },        
+        { icon: 'fa fa-floppy-o', name: 'save' },
         { icon: 'fa fa-flag-o', name: 'report' }
     ];
-    selectedDuration = this.durations[0];
+    subreddits = ["announcements", "Art", "AskReddit", "askscience", "aww", "blog", "books", "creepy", "dataisbeautiful", "DIY", "Documentaries", "EarthPorn", "explainlikeimfive", "food", "funny", "Futurology", "gadgets", "gaming", "GetMotivated", "gifs", "history", "IAmA", "InternetIsBeautiful", "Jokes", "LifeProTips", "listentothis", "mildlyinteresting", "movies", "Music", "news", "nosleep", "nottheonion", "OldSchoolCool", "personalfinance", "philosophy", "photoshopbattles", "pics", "science", "Showerthoughts", "space", "sports", "television", "tifu", "todayilearned", "TwoXChromosomes", "UpliftingNews", "videos", "worldnews", "WritingPrompts", "edit subscriptions"];
     types = ContentType;
     constructor() {
         let self = this;
-        _.each(_.range(50), () => {            
+        _.each(_.range(50), () => {
             self.items.push(new ContentItem());
         })
     }
-    takeAction(item:ContentItem, action: any){
+    ngAfterViewInit() {
+        //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+        //Add 'implements AfterViewInit' to the class.
+        setTimeout(() => {
+            let self = this;
+            let _ad: HTMLElement = document.getElementById(self.mainAd);
+            if (_ad) {
+                _ad.classList.add('show');
+            }
+        }, 6500);
+    }
+    takeAction(item: ContentItem, action: any) {
         console.log(item, action);
+    }
+    launchSubReddit(subredddit: any) {
+        console.log(subredddit);
+    }
+    dismissAd() {
+        let self = this;
+        let _ad: HTMLElement = document.getElementById(self.mainAd);
+        if (_ad) {
+            _ad.classList.remove('show');            
+        }
     }
 }

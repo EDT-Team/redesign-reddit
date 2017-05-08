@@ -1,33 +1,30 @@
+@import '../../mixins';
+
 $app-logo-fill: #e74c3c;
-@mixin scrollbars($size, $foreground-color, $background-color) {
-     ::-webkit-scrollbar {
-        width: $size;
-        height: $size;
-    }
-     ::-webkit-scrollbar-thumb {
-        background: $foreground-color;
-    }
-     ::-webkit-scrollbar-track {
-        background: $background-color;
-    } // For Internet Explorer
-    .app-nav {
-        -ms-scrollbar-face-color: $foreground-color;
-        scrollbar-face-color: $foreground-color;
-        -ms-scrollbar-track-color: $background-color;
-        scrollbar-track-color: $background-color;
-    }
-}
 
 .app {
     &-content {
         height: 100vh;
-
         h1 {
             color: #C0C0C0;
             width: 100%;
             text-align: center;
             font-family: 'Open sans', sans-serif;
             font-weight: 100;
+        }
+        &-watermark{
+            font-size: x-small;
+            font-family: 'Open sans', sans-serif;
+            opacity: 0.20;
+            position: absolute;
+            text-transform: uppercase;            
+            color: #303030;
+            padding: 2px 4px;
+            letter-spacing: 2px;
+            top:0;
+            left:40px;
+            pointer-events: none;
+            font-weight: bold;
         }
         &-header {
             height: 65px;
@@ -38,8 +35,8 @@ $app-logo-fill: #e74c3c;
                 padding: 0 15px;
                 font-size: small;
                 font-family: 'Open sans', sans-serif;
+                // box-shadow: 0 0 0 0 #fff;
                 border-radius: 5px;
-                box-shadow: 0 0 0 0 #fff;
                 background-color: #fff;
                 text-transform: capitalize;
                 color: #303030;
@@ -47,7 +44,6 @@ $app-logo-fill: #e74c3c;
                 margin-right: 15px;
                 min-width: 100px;
                 float: left;
-                border-radius: 25px;
                 box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.05);
                 box-sizing: border-box;
                 transition: background-color 0.2s linear 0s, color 0.2s linear 0s, border-color 0.2s linear 0s;
@@ -159,8 +155,97 @@ $app-logo-fill: #e74c3c;
                         &:hover,
                         &:focus,
                         &:active {
-                            color: $app-logo-fill; 
+                            color: $app-logo-fill;
                             background: #f0f0f0;
+                        }
+                    }
+                }
+            }
+            &-sublinks {
+                @include scrollbars(0.50em, #D0D0D0, #E6E6E6);
+                &-container {
+                    float: left;
+                }
+                &.show {
+                    .app-content-header-sublinks-toggle {
+                        background: transparent;
+                        color: $app-logo-fill;
+                    }
+                }
+                &-toggle {
+                    border: none;
+                    background: none;
+                    font-family: 'Open sans', sans-serif;
+                    font-size: small;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    color: #565656;
+                    background-color: transparent;
+                    padding: 0 0 0 15px;
+                    margin: 0;
+                    line-height: 48px;
+                    box-shadow: none;
+                    outline: none;
+                    cursor: pointer;
+                    border-radius: 0;
+                    &:after {
+                        margin-left: 10px;
+                        position: relative;
+                        top: -1px;
+                    }
+                }
+                .dropdown-menu {
+                    padding:30px;
+                    max-width:1000px;
+                    width:calc(100vw - 90px);
+                    left: auto !important;
+                    top: calc(100% + 15px);
+                    height: calc(100vh - 100px);
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    -webkit-overflow-scrolling: touch;
+                    -ms-overflow-style: -ms-autohiding-scrollbar;
+                    right:0;
+                    border: none;
+                    margin: 0;
+                    border-radius: 0;
+                    box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);
+                    background-color: #fff;
+                    button {
+                        display: inline-block;
+                        width:25%;
+                        text-align: center;
+                        margin: 0;
+                        padding: 0 15px;
+                        line-height: 48px;
+                        min-width: 100px;
+                        font-family: 'Open sans', sans-serif;
+                        font-size: small;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        color: #707070;
+                        cursor: pointer;
+                        transition: background-color 0.2s linear 0s;
+                        box-sizing: border-box;
+                        border: 1px dashed #D8D8D8;
+
+                        &:hover,
+                        &:focus,
+                        &:active {
+                            color: $app-logo-fill;
+                            background: #f0f0f0;
+                        }
+
+                        @include respond-to-sm-only{
+                            width:33%;
+                        }
+
+                        @include respond-to-xs-only{
+                            width:50%;
+                        }
+
+                        @include respond-to-x2s-only{
+                            width:100%;
                         }
                     }
                 }
@@ -171,6 +256,61 @@ $app-logo-fill: #e74c3c;
             padding: 20px 15px 0 30px;
             box-sizing: border-box;
             @include scrollbars(0.50em, #C0C0C0, #E6E6E6);
+
+            &-ad{
+                width: calc(100% - 35px);
+                height: 0;
+                display: block;
+                overflow: hidden;
+                padding: 0 0 0 15px;
+                transition: height 0.5s ease-in 0.2s;
+                &.show{
+                    height: 250px;
+                    margin-bottom: 15px;
+                }
+                &-inner{
+                    background: $app-logo-fill;
+                    width:100%;
+                    height: 100%;
+                    box-sizing: border-box;
+                    background: url(../../assets/sample_img.png);
+                    background-size: cover;
+                    position: relative;
+                    &-watermark{
+                        color: #303030;
+                        background: #fff;
+                        padding: 1px 2px;
+                        position: absolute;
+                        top:0;
+                        left: 0;
+                         font-family: 'Open sans', sans-serif;
+                        font-size: x-small;
+                        display: block;
+                        opacity: 0.65;
+                    }
+                    &-dismiss{
+                        color: #303030;
+                        background: transparent;
+                        padding: 0;
+                        text-align: center;
+                        width:20px;
+                        height: 20px;
+                        line-height: 20px;
+                        position: absolute;
+                        top:0;
+                        right: 0;
+                        font-size: x-small;
+                        display: block;
+                        opacity: 0.80;
+                        cursor: pointer;
+                        &:hover{
+                            background: #000;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+
             &-main {
                 padding: 0 30px 0 15px;
                 box-sizing: border-box;
@@ -346,7 +486,7 @@ $app-logo-fill: #e74c3c;
                                         &:hover,
                                         &:focus,
                                         &:active {
-                                            color: $app-logo-fill;                                            
+                                            color: $app-logo-fill;
                                             background: #f0f0f0;
                                         }
                                         i {

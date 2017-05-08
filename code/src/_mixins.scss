@@ -1,7 +1,53 @@
-$break-desktop: 1024px;
+$break-desktop: 1367px;
+$break-sm: 900px;
+$break-xs: 768px;
+$break-x2s: 400px;
 
 @mixin respond-to-desktop() {
      @media (max-width: $break-desktop - 1) {
             @content;
+    }
+}
+
+@mixin respond-to-desktop-only() {
+     @media (min-width: $break-sm) and (max-width: $break-desktop - 1) {
+            @content;
+    }
+}
+
+@mixin respond-to-sm-only{
+    @media (min-width: $break-xs) and (max-width: $break-sm - 1) {
+            @content;
+    }
+}
+
+@mixin respond-to-xs-only{
+    @media (min-width: $break-x2s) and (max-width: $break-xs - 1) {
+            @content;
+    }
+}
+
+@mixin respond-to-x2s-only{
+    @media (max-width: $break-x2s - 1) {
+            @content;
+    }
+}
+
+@mixin scrollbars($size, $foreground-color, $background-color) {
+     ::-webkit-scrollbar {
+        width: $size;
+        height: $size;
+    }
+     ::-webkit-scrollbar-thumb {
+        background: $foreground-color;
+    }
+     ::-webkit-scrollbar-track {
+        background: $background-color;
+    } // For Internet Explorer
+    .app-nav {
+        -ms-scrollbar-face-color: $foreground-color;
+        scrollbar-face-color: $foreground-color;
+        -ms-scrollbar-track-color: $background-color;
+        scrollbar-track-color: $background-color;
     }
 }

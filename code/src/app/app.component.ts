@@ -27,7 +27,7 @@ export class AppComponent implements AfterViewInit {
       self.currentLayout = layout;
       console.log(layout);
     }
-   if(window.innerWidth < 1024) {
+   if(window.innerWidth < 1367) {
       self.currentLayout = AppLayout.COLLAPSED;
     }
     else {
@@ -45,7 +45,7 @@ export class AppComponent implements AfterViewInit {
         _loader.style.display = 'NONE';
         _drawer.style.opacity = '1';
       });
-    }, 1500);
+    }, 4500);
   }
   adaptLayoutForWidthChange(){
     let self  = this;
