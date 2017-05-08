@@ -207,6 +207,7 @@ $app-logo-fill: #e74c3c;
             overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
             -ms-overflow-style: -ms-autohiding-scrollbar;
+            cursor: pointer;
             &-item {
                 width: 100%;
                 padding: 0 20px 0 25px;
