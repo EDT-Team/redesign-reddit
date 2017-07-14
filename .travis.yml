@@ -6,9 +6,9 @@ branches:
   only:
     - master
 
-before_install: 
+before_install:
+  - sudo apt-get update && sudo apt-get install yarn
   - cd code
-  - sudo apt-get install yarn
 
 before_script:
   - npm install -g @angular/cli
