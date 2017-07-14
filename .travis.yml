@@ -8,7 +8,7 @@ branches:
 
 before_install: 
   - cd code
-  - sudo brew install yarn
+  - sudo apt-get install yarn
 
 before_script:
   - npm install -g @angular/cli
