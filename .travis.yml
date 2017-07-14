@@ -6,11 +6,11 @@ branches:
   only:
     - master
 
-before_install: 
-  - cd code
-
 before_script:
   - npm install -g @angular/cli
+  - cd code
+  - npm install @angular/cdk
+  - npm install
 
 script:
   - ng build
