@@ -45,7 +45,7 @@ export class AppComponent implements AfterViewInit {
         _loader.style.display = 'NONE';
         _drawer.style.opacity = '1';
       });
-    }, 4500);
+    }, 1500);
   }
   adaptLayoutForWidthChange(){
     let self  = this;

@@ -27,6 +27,7 @@ $app-logo-fill: #e74c3c;
         &-header {
             height: 65px;
             padding: 20px 50px 0 45px;
+            position: relative;
             &-new {
                 line-height: 34px;
                 margin-top: 6px;
@@ -163,6 +164,7 @@ $app-logo-fill: #e74c3c;
                 }
             }
             &-sublinks {
+                position: inherit;
                 @include scrollbars(0.50em, #D0D0D0, #E6E6E6);
                 &-container {
                     float: left;
@@ -189,6 +191,12 @@ $app-logo-fill: #e74c3c;
                     outline: none;
                     cursor: pointer;
                     border-radius: 0;
+                    outline: none;
+                    
+                    &:active,
+                    &:focus {
+                        outline: none;
+                    }
                     &:after {
                         margin-left: 10px;
                         position: relative;
@@ -201,8 +209,8 @@ $app-logo-fill: #e74c3c;
                 }
                 .dropdown-menu {
                     padding: 30px;
-                    max-width: 1000px;
-                    width: calc(100vw - 90px);
+                    // max-width: 1000px;
+                    width: calc(100% - 90px);
                     left: auto !important;
                     top: calc(100% + 15px);
                     height: calc(100vh - 100px);
@@ -210,7 +218,7 @@ $app-logo-fill: #e74c3c;
                     overflow-x: hidden;
                     -webkit-overflow-scrolling: touch;
                     -ms-overflow-style: -ms-autohiding-scrollbar;
-                    right: 0;
+                    right: 45px;
                     border: none;
                     margin: 0;
                     border-radius: 0;
@@ -219,25 +227,28 @@ $app-logo-fill: #e74c3c;
                     button {
                         display: inline-block;
                         width: 25%;
-                        text-align: center;
-                        margin: 0;
+                        text-align: left;
+                        margin: 0 0 10px 0;
                         padding: 0 15px;
-                        line-height: 48px;
+                        line-height: 42px;
                         min-width: 100px;
                         font-family: 'Open sans', sans-serif;
                         font-size: small;
-                        font-weight: bold;
-                        text-transform: uppercase;
+                        font-weight: 400;
+                        text-transform: lowercase;
                         color: #707070;
                         cursor: pointer;
                         transition: background-color 0.2s linear 0s;
                         box-sizing: border-box;
-                        border: 1px dashed #D8D8D8;
+                        border-radius: 0;
+                        outline: none;
+                        border-left: 1px dashed #D8D8D8;
                         &:hover,
                         &:focus,
                         &:active {
+                            outline: none;
                             color: $app-logo-fill;
-                            background: #f0f0f0;
+                            background: #f6f6f6;
                         }
                         @include respond-to-sm-only {
                             width: 33%;
@@ -247,6 +258,29 @@ $app-logo-fill: #e74c3c;
                         }
                         @include respond-to-x2s-only {
                             width: 100%;
+                        }
+                    }
+                    ul.markers {
+                        white-space: nowrap;
+                        list-style: none;
+                        text-align: left;
+                        height: 36px;
+                        padding: 0px;
+                        li {
+                            display: inline-block;
+                            width: 24px;
+                            color: #909090;
+                            cursor: pointer;
+                            &.disabled {
+                                opacity: 0.3
+                            }
+                            &:hover,
+                            &:focus {
+                                color: #303030;
+                            }
+                            &.active {
+                                color: $app-logo-fill;
+                            }
                         }
                     }
                 }
@@ -319,6 +353,14 @@ $app-logo-fill: #e74c3c;
                 overflow-y: auto;
                 -webkit-overflow-scrolling: touch;
                 -ms-overflow-style: -ms-autohiding-scrollbar;
+                opacity: 1;
+                transition: opacity 0.16s ease-in-out 0s;
+                &[data-tag="items-scroller"] {
+                    &[disable-scroll="true"] {
+                        overflow-y: hidden;
+                        opacity: 0;
+                    }
+                }
                 &-item {
                     width: 100%;
                     min-height: 75px; //display: inline-block;
@@ -545,4 +587,10 @@ $app-logo-fill: #e74c3c;
             }
         }
     }
+}
+
+[disable-ctrl="true"] {
+    overflow-y: hidden;
+    opacity: 0.33;
+    pointer-events: none;
 }
